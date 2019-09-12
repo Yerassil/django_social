@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  {% for image in images %}
+
+  <div class="well">
+      <div class="media">
+        <a class="pull-left" href="#">
+        <img src='{{ image.image.url }}' width="350" height="350"></a>
+      <div class="media-body">
+        <h3 class="media-heading">User: {{ image.user.username }}</a></h3>
+          <p>Description: {{ image.description }}</p>
+      </div>
+      </div>
+  </div>
+
+  {% endfor %}
+  
+
+{% endblock %}
