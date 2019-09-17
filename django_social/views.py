@@ -1,8 +1,4 @@
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, redirect, reverse
-from django.views.generic import ListView, View
-from django.views import View
-
+from django.views.generic import ListView
 from .models import Image
 
 

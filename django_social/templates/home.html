@@ -4,15 +4,20 @@
 
   {% for image in images %}
 
-  <div class="well">
-      <div class="media">
-        <a class="pull-left" href="#">
-        <img src='{{ image.image.url }}' width="350" height="350"></a>
-      <div class="media-body">
-        <h3 class="media-heading">User: {{ image.user.username }}</a></h3>
-          <p>Description: {{ image.description }}</p>
-      </div>
-      </div>
+  <div class="container">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <div class="media">
+            <a class="pull-left" href="#">
+              <img class="media-object" src='{{ image.image.url }}' width="350" height="350">
+            </a>
+          <div class="media-body">
+            <h3 class="mt-0">User: <a href="#">{{ image.user.username }}</a></h3>
+              <p>Description: {{ image.description }}</p>
+          </div>
+        </div>
+      </li>
+    </ul>
   </div>
 
   {% endfor %}
