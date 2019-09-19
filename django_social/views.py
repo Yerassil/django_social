@@ -1,6 +1,6 @@
 from django.views.generic import ListView
 from .models import Image
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -23,3 +23,8 @@ def login_view(request):
         else:
             return HttpResponseRedirect("/")
     return render(request, "/")
+
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect("/")
