@@ -18,8 +18,21 @@
 <body>
     <div class="container">
         <nav class="navbar navbar-dark bg-dark">
-            <a class="navbar-brand" href="#"> Social Stuff </a>
+            <a class="navbar-brand" href="#"> 
+                {% if request.user.is_authenticated %}
+                    Hello, {{ user.username }}, and welcome to the Social Stuff !
+                {% else %}
+                    Hi, please log in :)
+                {% endif %}
+            </a>
         <!-- Navbar content -->
+            <form method="post" action="/login/">
+                {% csrf_token %}
+                <input type="text" name="username" value="username" id="username">
+                <input type="password" name="password" value="password" id="password">
+                <input type="submit" value="Log in" />
+                <input type="hidden" name="next" value="{{ next|escape }}"> 
+            </form>
         </nav>
     </div>
     <div class="container">
