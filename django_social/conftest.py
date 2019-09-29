@@ -2,6 +2,7 @@ import pytest
 from datetime import datetime
 from django_social.models import User
 
+
 @pytest.fixture
 def data():
     user = User.objects.create_user(
