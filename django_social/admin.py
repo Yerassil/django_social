@@ -1,7 +1,6 @@
 from django.contrib import admin
-from django.utils.html import format_html
 
-from .models import Image
+from .models import Image, Follower, User
 
 
 class ImageAdmin(admin.ModelAdmin):
@@ -9,3 +8,17 @@ class ImageAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Image, ImageAdmin)
+
+
+@admin.register(User)
+class UserAdmin(admin.ModelAdmin):
+    list_display = [
+        'first_name', 'last_name', 'birthday'
+    ]
+
+
+@admin.register(Follower)
+class FollowerAdmin(admin.ModelAdmin):
+    list_display = [
+        'follower', 'following'
+    ]
