@@ -22,10 +22,6 @@ def test_user_not_logged_in(client, db):
 
 def test_login(client, db, data):
     user = data
-    response = client.post(
-        'login/',
-        {'username': 'user', 'password': 'useruser'}
-    )
     login = client.login(username='user', password='useruser')
     assert login is True
     assert user.is_authenticated is True
@@ -54,7 +50,7 @@ def test_followers(client, db):
     Follower.objects.create(follower=cat, following=alice)
 
     assert alice.following.all().count() == 1
-    assert alice.following.all()[0].following.username == 'bob'
+    assert alice.following.all()[0].following == bob
     assert cat.following.all().count() == 2
-    assert cat.following.all()[0].following.username == 'alice'
-    assert cat.following.all()[1].following.username == 'bob'
+    assert cat.following.all()[0].following == alice
+    assert cat.following.all()[1].following == bob
