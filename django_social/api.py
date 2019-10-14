@@ -1,5 +1,5 @@
 from rest_framework.viewsets import ModelViewSet
-from rest_framework import routers
+from rest_framework import routers, permissions
 
 from .models import Image, User
 
@@ -9,6 +9,7 @@ from .serializers import ImageSerializer, UserSerializer
 class ImageViewSet(ModelViewSet):
     serializer_class = ImageSerializer
     queryset = Image.objects.all()
+    permission_classes = (permissions.IsAuthenticated,)
 
 
 class UserViewSet(ModelViewSet):

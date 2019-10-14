@@ -20,8 +20,10 @@ from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from . import views
 from .api import api_urls
+from rest_framework.authtoken import views as drf_views
 
 urlpatterns = [
+    path('api/auth/', drf_views.obtain_auth_token),
     path('api-auth/', include('rest_framework.urls')),
     path('api/', include(api_urls)),
     path('admin/', admin.site.urls),
